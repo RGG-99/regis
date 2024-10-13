@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Dispositivos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar por nombre o modelo" oninput="searchDevices()">
+        </div>
+        <div id="loginForm" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeLogin()">&times;</span>
+                <h2>Iniciar Sesión</h2>
+                <form id="login">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" required>
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" required>
+                    <button type="submit">Iniciar Sesión</button>
+                </form>
+            </div>
+        </div>
+        
+        <header>
+            <img src="logo.png" alt="Logo de la empresa" class="logo">
+            <div class="header-title">
+                <h1>Registro de Dispositivos</h1>
+                <p class="sub-title">Mantén un control detallado de los dispositivos recibidos</p>
+            </div>
+        </header>
+
+        <div class="button-container">
+            <button id="addDeviceBtn">Añadir Dispositivo</button>
+            <button id="clearDevicesBtn">Vaciar Registro</button>
+        </div>
+
+        <div id="deviceForm" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Registrar Nuevo Dispositivo</h2>
+                <form id="form">
+                    <label for="ownerName">Nombre del Dueño:</label>
+                    <input type="text" id="ownerName" required>
+
+                    <label for="contactNumber">Número de Contacto:</label>
+                    <input type="text" id="contactNumber" required>
+
+                    <label for="deviceModel">Modelo del Dispositivo:</label>
+                    <input type="text" id="deviceModel" required>
+
+                    <label for="problem">Problema:</label>
+                    <textarea id="problem" required></textarea>
+
+                    <label for="cost">Costo:</label>
+                    <input type="number" id="cost" required>
+
+                    <label for="arrivalDate">Fecha de Llegada:</label>
+                    <input type="date" id="arrivalDate" required>
+
+                    <label for="arrivalTime">Hora de Llegada:</label>
+                    <input type="time" id="arrivalTime" required>
+
+                    <label for="deviceImage">Imagen del Dispositivo:</label>
+                    <input type="file" id="deviceImage" accept="image/*" required>
+
+                    <div class="checkbox-container">
+                        <label>
+                            <input type="checkbox" id="delivered"> Entregado
+                        </label>
+                    </div>
+
+                    <button type="submit" class="register-button">Registrar Dispositivo</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="deviceList"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

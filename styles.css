@@ -1,0 +1,241 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('fondo.jpg'); /* Cambia por tu imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  color: #333;
+}
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed; /* Mantenerlo en la pantalla */
+  z-index: 1; /* Encima de otros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Alto completo */
+  overflow: auto; /* Habilitar el desplazamiento si es necesario */
+  background-color: rgba(0,0,0,0.4); /* Fondo oscuro con opacidad */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% desde la parte superior y centrado */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Ancho */
+  max-width: 400px; /* Ancho máximo */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+  display: flex; /* Flexbox para centrar la barra de búsqueda */
+  justify-content: center;
+  margin-bottom: 20px; /* Espaciado inferior */
+}
+
+#searchInput {
+  width: 60%; /* Ancho de la barra de búsqueda */
+  padding: 10px;
+  margin-bottom: 20px; /* Espaciado inferior */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #c0392b, #e74c3c); /* Degradado rojo */
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 70px; /* Ajusta el tamaño del logo */
+  height: auto;
+  margin-right: 20px;
+}
+
+.header-title {
+  flex-grow: 1; /* Permite que el título ocupe el espacio restante */
+  text-align: left; /* Alinea el texto a la izquierda */
+}
+
+h1 {
+  font-size: 2rem; /* Aumentar tamaño del título */
+  color: #fff; /* Color blanco para el texto */
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.sub-title {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8); /* Color gris claro para el subtítulo */
+  margin-top: 5px; /* Espaciado superior */
+}
+
+.button-container {
+  display: flex; /* Usar flexbox para alinear los botones */
+  justify-content: center; /* Centrar los botones */
+  margin-bottom: 20px; /* Espaciado inferior */
+}
+
+#addDeviceBtn,
+#clearDevicesBtn {
+  margin: 0 10px; /* Espaciado entre botones */
+  background-color: #f39c12; /* Color amarillo */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#addDeviceBtn:hover {
+  background-color: #e67e22; /* Color amarillo más oscuro */
+  transform: translateY(-2px);
+}
+
+#clearDevicesBtn {
+  background-color: #c0392b; /* Color rojo */
+}
+
+#clearDevicesBtn:hover {
+  background-color: #a93226; /* Color rojo más oscuro */
+}
+
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 1; /* Encima de todo */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Alto completo */
+  overflow: auto; /* Activar scroll si es necesario */
+  background-color: rgba(0, 0, 0, 0.5); /* Negro con transparencia */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto; /* 10% desde la parte superior y centrado */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%; /* Cambia a un tamaño fijo */
+  max-width: 600px;
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.device-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinea los elementos hacia la izquierda */
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px 0; /* Espaciado entre dispositivos */
+  transition: transform 0.3s, box-shadow 0.3s;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.device-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para los campos del formulario */
+input, textarea {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilo del botón de registro */
+.register-button {
+  background-color: #2980b9; /* Color azul */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.register-button:hover {
+  background-color: #1c5980; /* Color azul más oscuro */
+  transform: translateY(-2px);
+}
+
+/* Estilo del checkbox */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+/* Estilo del botón entregado */
+.delivered-button {
+  background-color: #27ae60; /* Color verde */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.delivered-button:hover {
+  background-color: #219150; /* Color verde más oscuro */
+  transform: translateY(-2px);
+}
