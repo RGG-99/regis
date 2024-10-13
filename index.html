@@ -7,6 +7,30 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCXDAEGADOsr9Xc_HQeCuDR6C5nl47Zrss",
+    authDomain: "cf-celulares.firebaseapp.com",
+    projectId: "cf-celulares",
+    storageBucket: "cf-celulares.appspot.com",
+    messagingSenderId: "81571373235",
+    appId: "1:81571373235:web:39835c44c8614107ee50c6",
+    measurementId: "G-XQB6BZXL6E"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
     <div class="container">
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Buscar por nombre o modelo" oninput="searchDevices()">
