@@ -8,35 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
 
     let devices = []; // Almacenaremos los dispositivos aquí
-// Variables de usuario
-const validUsername = "usuario"; // Cambia esto por el nombre de usuario que desees
-const validPassword = "contraseña"; // Cambia esto por la contraseña que desees
-
-document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('loginForm');
-    const login = document.getElementById('login');
-
-    // Muestra el formulario de inicio de sesión al cargar la página
-    loginForm.style.display = 'block';
-
-    // Manejo del envío del formulario de inicio de sesión
-    login.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-
-        if (username === validUsername && password === validPassword) {
-            alert('Inicio de sesión exitoso');
-            loginForm.style.display = 'none'; // Cierra el formulario de inicio de sesión
-        } else {
-            alert('Usuario o contraseña incorrectos');
-        }
-    });
-});
-
-function closeLogin() {
-    document.getElementById('loginForm').style.display = 'none';
-}
 
     addDeviceBtn.addEventListener('click', () => {
         deviceForm.style.display = 'block';
@@ -52,55 +23,38 @@ function closeLogin() {
         }
     });
 
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const ownerName = document.getElementById('ownerName').value;
-    const contactNumber = document.getElementById('contactNumber').value;
-    const deviceModel = document.getElementById('deviceModel').value;
-    const problem = document.getElementById('problem').value;
-    const cost = document.getElementById('cost').value;
-    const arrivalDate = document.getElementById('arrivalDate').value;
-    const arrivalTime = document.getElementById('arrivalTime').value;
-    const deviceImage = document.getElementById('deviceImage').files[0];
-    const delivered = document.getElementById('delivered').checked;
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const ownerName = document.getElementById('ownerName').value;
+        const contactNumber = document.getElementById('contactNumber').value;
+        const deviceModel = document.getElementById('deviceModel').value;
+        const problem = document.getElementById('problem').value;
+        const cost = document.getElementById('cost').value;
+        const arrivalDate = document.getElementById('arrivalDate').value;
+        const arrivalTime = document.getElementById('arrivalTime').value;
+        const deviceImage = document.getElementById('deviceImage').files[0];
+        const delivered = document.getElementById('delivered').checked;
 
-    const reader = new FileReader();
-    reader.onload = async (e) => {
-        const newDevice = {
-            ownerName,
-            contactNumber,
-            deviceModel,
-            problem,
-            cost,
-            arrivalDate,
-            arrivalTime,
-            image: e.target.result,  // Convertimos la imagen a base64 para guardarla
-            delivered
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const newDevice = {
+                ownerName,
+                contactNumber,
+                deviceModel,
+                problem,
+                cost,
+                arrivalDate,
+                arrivalTime,
+                image: e.target.result,
+                delivered
+            };
+            devices.push(newDevice);
+            updateDeviceList();
+            deviceForm.style.display = 'none';
+            form.reset();
         };
-        
-        // Guarda el dispositivo en Firestore
-        await db.collection('devices').add(newDevice);
-        
-        devices.push(newDevice);  // Añadimos al array para mostrarlo
-        updateDeviceList();  // Actualizamos la lista visual
-        deviceForm.style.display = 'none';  // Cerramos el formulario
-        form.reset();  // Reseteamos el formulario
-    };
-    reader.readAsDataURL(deviceImage);
-});
-async function fetchDevices() {
-    const snapshot = await db.collection('devices').get();  // Obtenemos los dispositivos de Firestore
-    snapshot.forEach(doc => {
-        const data = doc.data();  // Obtenemos los datos
-        devices.push(data);  // Añadimos cada dispositivo a nuestra lista
+        reader.readAsDataURL(deviceImage);
     });
-    updateDeviceList();  // Actualizamos la lista visual
-}
-
-// Llama a esta función cuando la página cargue
-document.addEventListener('DOMContentLoaded', () => {
-    fetchDevices();  // Cargamos los dispositivos cuando la página esté lista
-});
 
     clearDevicesBtn.addEventListener('click', () => {
         devices = []; // Vaciar el array de dispositivos
@@ -167,3 +121,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
